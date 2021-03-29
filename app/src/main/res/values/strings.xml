@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FirebasePractice</string>
+    <string name="login">Login</string>
+    <string name="quick_link">Quick Link</string>
+    <string name="if_you_don_t_have_an_account_yet_click_here">If you don\'t have an account yet, click HERE</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="password">password</string>
+    <string name="username">username</string>
+</resources>
