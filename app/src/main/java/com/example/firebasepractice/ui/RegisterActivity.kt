@@ -1,4 +1,4 @@
-package com.example.firebasepractice
+package com.example.firebasepractice.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import com.example.firebasepractice.R
+import com.example.firebasepractice.showToast
 import com.google.firebase.auth.FirebaseAuth
 
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
