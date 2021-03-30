@@ -17,14 +17,26 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/logout"
+        android:id="@+id/proile_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/hello_world"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
+        android:textColor="@color/white"
+        android:background="@drawable/round_button_style"
+        android:text="@string/go_to_profile"
+        />
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/proile_button"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="5dp"
         android:textColor="@color/white"
         android:background="@drawable/round_button_style"
         android:text="@string/log_out"

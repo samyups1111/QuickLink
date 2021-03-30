@@ -12,4 +12,11 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="register">REGISTER</string>
     <string name="log_out">Log Out</string>
+    <string name="sammy_de_jesus">Sammy De Jesus</string>
+    <string name="links_500">Links: 500</string>
+    <string name="_2000_calories_burned_today">2000 Calories Burned Today</string>
+    <string name="body_mass_index_20">Body Mass Index 20%</string>
+    <string name="weight_180lb_height_5_9">Weight: 180lb, Height: 5\'9</string>
+    <string name="fat_percentage_13">Fat Percentage 13%</string>
+    <string name="go_to_profile">Go To Profile</string>
 </resources>

@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
         mAuth = FirebaseAuth.getInstance()
         findViewById<Button>(R.id.logout).setOnClickListener(this)
+        findViewById<Button>(R.id.proile_button).setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -25,6 +26,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 mAuth.signOut()
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
+            }
+            R.id.proile_button -> {
+                startActivity(Intent(this, ProfileActivity::class.java))
             }
         }
     }

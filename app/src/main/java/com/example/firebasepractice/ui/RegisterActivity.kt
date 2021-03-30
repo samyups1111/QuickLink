@@ -7,18 +7,23 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import com.example.firebasepractice.R
+import com.example.firebasepractice.model.User
 import com.example.firebasepractice.showToast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     private val TAG = "RegisterActivity"
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var mDatabase: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         mAuth = FirebaseAuth.getInstance()
+        mDatabase = FirebaseDatabase.getInstance().reference
         findViewById<Button>(R.id.register).setOnClickListener(this)
     }
 
@@ -28,21 +33,28 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
         val password = findViewById<EditText>(R.id.create_password).text.toString()
         val password2 = findViewById<EditText>(R.id.confirm_password).text.toString()
 
-        if (fullName.isEmpty() || email.isEmpty() || password.isEmpty() || password2.isEmpty()) {
+        if (fullName.isEmpty() || email.isEmpty() || "@" !in email || password.isEmpty() || password2.isEmpty()) {
             showToast("All fields are required")
         } else {
             if (password != password2) {
                 showToast("Passwords must match")
+            } else if (password.length < 6) {
+                showToast("Password must be at least 6 characters long")
             } else {
                 mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener {
-                        if (it.isSuccessful) {
-                            showToast("Registration was successful")
-                            startActivity(Intent(this, MainActivity::class.java))
-                            finish()
-                        } else {
-                            showToast("Something went wrong, please try again later")
-                        }
+                    .addOnCompleteListener { it ->
+                        val user = createUser(fullName, email)
+                        val reference = mDatabase.child("users").child(it.result?.user!!.uid)
+                        reference.setValue(user)
+                            .addOnCompleteListener {
+                                if (it.isSuccessful) {
+                                    showToast("Registration was successful")
+                                    startActivity(Intent(this, MainActivity::class.java))
+                                    finish()
+                                } else {
+                                    showToast("Something went wrong, please try again later")
+                                }
+                            }
                     }
             }
         }
@@ -55,4 +67,14 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+
+    private fun createUser(fullName: String, email: String): User {
+        val username = createUserName(fullName)
+        return User(fullName, username, email )
+    }
+
+    private fun createUserName(userName: String) =
+        userName.toLowerCase().replace(" ", ".")
+
+
 }
