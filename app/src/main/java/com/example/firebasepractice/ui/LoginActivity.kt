@@ -1,13 +1,14 @@
-package com.example.firebasepractice
+package com.example.firebasepractice.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import com.example.firebasepractice.R
+import com.example.firebasepractice.showToast
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
@@ -61,7 +62,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.create_account -> {
                 startActivity(Intent(this, RegisterActivity::class.java))
-                finish()
             }
             R.id.forgot_password -> {
                 showToast("Forgot Password Clicked")

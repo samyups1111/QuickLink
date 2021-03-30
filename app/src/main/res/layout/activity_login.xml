@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context=".LoginActivity">
+    tools:context=".ui.LoginActivity">
 
     <TextView
         android:id="@+id/login_title"
@@ -81,7 +81,7 @@
         android:id="@+id/create_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/if_you_don_t_have_an_account_yet_click_here"
+        android:text="@string/register"
         app:layout_constraintTop_toBottomOf="@+id/forgot_password"
         android:layout_marginTop="20dp"
         android:clickable="true"

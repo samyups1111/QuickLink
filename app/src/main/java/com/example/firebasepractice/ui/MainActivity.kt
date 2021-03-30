@@ -1,10 +1,11 @@
-package com.example.firebasepractice
+package com.example.firebasepractice.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import com.example.firebasepractice.R
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
         mAuth = FirebaseAuth.getInstance()
         findViewById<Button>(R.id.logout).setOnClickListener(this)
+        findViewById<Button>(R.id.proile_button).setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -24,6 +26,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 mAuth.signOut()
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
+            }
+            R.id.proile_button -> {
+                startActivity(Intent(this, ProfileActivity::class.java))
             }
         }
     }
