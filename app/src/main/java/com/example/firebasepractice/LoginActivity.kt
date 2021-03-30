@@ -3,9 +3,11 @@ package com.example.firebasepractice
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
@@ -27,8 +29,15 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         userPassword = findViewById(R.id.enter_password)
 
         mAuth = FirebaseAuth.getInstance()
+        if (mAuth.currentUser != null) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
 
         loginButton.setOnClickListener(this)
+        findViewById<TextView>(R.id.forgot_password).setOnClickListener(this)
+        findViewById<TextView>(R.id.create_account).setOnClickListener(this)
+
     }
 
     override fun onClick(view: View) {
@@ -49,6 +58,13 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 } else {
                     showToast("Please enter email and password")
                 }
+            }
+            R.id.create_account -> {
+                startActivity(Intent(this, RegisterActivity::class.java))
+                finish()
+            }
+            R.id.forgot_password -> {
+                showToast("Forgot Password Clicked")
             }
         }
     }
