@@ -29,4 +29,7 @@
     <string name="_00">0</string>
     <string name="avg_calories_burned">Avg. Calories Burned</string>
     <string name="avg_calories_intake">Avg. Calories Intake</string>
+    <string name="unknown">Unknown</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
 </resources>

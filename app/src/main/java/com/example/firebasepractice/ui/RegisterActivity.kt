@@ -36,26 +36,30 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
         if (fullName.isEmpty() || email.isEmpty() || "@" !in email || password.isEmpty() || password2.isEmpty()) {
             showToast("All fields are required")
         } else {
-            if (password != password2) {
-                showToast("Passwords must match")
-            } else if (password.length < 6) {
-                showToast("Password must be at least 6 characters long")
-            } else {
-                mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener { it ->
-                        val user = createUser(fullName, email)
-                        val reference = mDatabase.child("users").child(it.result?.user!!.uid)
-                        reference.setValue(user)
-                            .addOnCompleteListener {
-                                if (it.isSuccessful) {
-                                    showToast("Registration was successful")
-                                    startActivity(Intent(this, MainActivity::class.java))
-                                    finish()
-                                } else {
-                                    showToast("Something went wrong, please try again later")
-                                }
+            when {
+                password != password2 -> {
+                    showToast("Passwords must match")
+                }
+                password.length < 6 -> {
+                    showToast("Password must be at least 6 characters long")
+                }
+                else -> {
+                    mAuth.createUserWithEmailAndPassword(email, password)
+                            .addOnCompleteListener { it ->
+                                val user = createUser(fullName, email)
+                                val reference = mDatabase.child("users").child(it.result?.user!!.uid)
+                                reference.setValue(user)
+                                        .addOnCompleteListener {
+                                            if (it.isSuccessful) {
+                                                showToast("Registration was successful")
+                                                startActivity(Intent(this, MainActivity::class.java))
+                                                finish()
+                                            } else {
+                                                showToast("Something went wrong, please try again later")
+                                            }
+                                        }
                             }
-                    }
+                }
             }
         }
     }
