@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import com.example.firebasepractice.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         mAuth = FirebaseAuth.getInstance()
         findViewById<Button>(R.id.logout).setOnClickListener(this)
         findViewById<Button>(R.id.proile_button).setOnClickListener(this)
+        setupBottomNavigation()
     }
 
     override fun onClick(view: View) {
@@ -29,6 +31,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.proile_button -> {
                 startActivity(Intent(this, ProfileActivity::class.java))
+            }
+        }
+    }
+
+    private fun setupBottomNavigation() {
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNav.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.home_tab -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                    true
+                }
+                R.id.profile_tab -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    true
+                }
+                else -> false
             }
         }
     }

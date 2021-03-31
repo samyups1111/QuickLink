@@ -40,7 +40,7 @@
                 android:textSize="30sp"
                 android:gravity="center_vertical|center_horizontal"
                 app:layout_constraintStart_toEndOf="@+id/profile_picture"
-                android:text="@string/sammy_de_jesus"
+                android:text="@string/unknown"
                 />
 
         </LinearLayout>
@@ -286,5 +286,13 @@
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_navigation_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
