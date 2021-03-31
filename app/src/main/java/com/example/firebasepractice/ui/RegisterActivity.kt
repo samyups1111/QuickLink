@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import com.example.firebasepractice.R
 import com.example.firebasepractice.model.User
-import com.example.firebasepractice.showToast
+import com.example.firebasepractice.utils.showToast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase

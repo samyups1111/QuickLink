@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.example.firebasepractice.R
-import com.example.firebasepractice.showToast
+import com.example.firebasepractice.utils.showToast
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {

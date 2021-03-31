@@ -19,4 +19,14 @@
     <string name="weight_180lb_height_5_9">Weight: 180lb, Height: 5\'9</string>
     <string name="fat_percentage_13">Fat Percentage 13%</string>
     <string name="go_to_profile">Go To Profile</string>
+    <string name="bmi">BMI</string>
+    <string name="_90">90%</string>
+    <string name="fat_percentage">Fat Percentage</string>
+    <string name="_0">0%</string>
+    <string name="_0_lb">0 lb</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="_00">0</string>
+    <string name="avg_calories_burned">Avg. Calories Burned</string>
+    <string name="avg_calories_intake">Avg. Calories Intake</string>
 </resources>
